@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes  } from "react-router"
+import { Route, Routes  } from "react-router"
 import Feed from "../Page/Feed"
 import Login from "../Page/Login"
 import SignUp from "../Page/SignUp"
