@@ -12,7 +12,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
       <Navbar />
 
       {/* CONTENT */}
-      <div className="max-w-[1200px] mx-auto px-4 mt-6 grid grid-cols-12 gap-6">
+      <div className="max-w-[1320px] mx-auto px-4 mt-6 grid grid-cols-12 gap-6">
 
         {/* LEFT */}
         <div className="hidden lg:block col-span-3">

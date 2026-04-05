@@ -1,4 +1,6 @@
 import stevejobs from "../../assets/people1.png";
+import img2 from "../../assets/people2.png"
+import img3 from "../../assets/people3.png"
 
 const SuggestedPeople = () => {
   const people = [
@@ -10,12 +12,12 @@ const SuggestedPeople = () => {
     {
       name: "Ryan Roslansky",
       role: "CEO of Linkedin",
-      img: stevejobs,
+      img: img2,
     },
     {
       name: "Dylan Field",
       role: "CEO of Figma",
-      img: stevejobs,
+      img: img3,
     },
   ];
 
