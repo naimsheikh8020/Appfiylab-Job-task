@@ -5,13 +5,15 @@ const postSchema = new mongoose.Schema(
     content: {
       type: String,
       required: true,
+      trim: true,
     },
     image: {
-      type: String,
+      type: String, // Cloudinary URL
     },
     author: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
+      required: true,
     },
     visibility: {
       type: String,
@@ -28,4 +30,22 @@ const postSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("Post", postSchema);
+
+// 🔥 INDEXES (PERFORMANCE)
+
+// For sorting feed (newest first)
+postSchema.index({ createdAt: -1 });
+
+// For fetching user-specific posts
+postSchema.index({ author: 1 });
+
+// For filtering public/private posts
+postSchema.index({ visibility: 1 });
+
+// 🔥 ADVANCED (optional but powerful)
+// Combined index for feed queries
+postSchema.index({ visibility: 1, createdAt: -1 });
+
+const Post = mongoose.model("Post", postSchema);
+
+export default Post;
