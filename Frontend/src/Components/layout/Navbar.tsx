@@ -33,44 +33,44 @@ const Navbar = () => {
         {/* RIGHT */}
         <div className="flex items-center gap-8">
 
-        {/* HOME (ACTIVE) */}
-        <div className="relative flex flex-col items-center justify-center">
-          <Home className="w-5 h-5 text-blue-500" />
-          <span className="absolute -bottom-[20px] w-6 h-0.5 bg-blue-500 rounded-full"></span>
-        </div>
+          {/* HOME (ACTIVE) */}
+          <div className="relative flex flex-col items-center justify-center">
+            <Home className="w-5 h-5 text-blue-500" />
+            <span className="absolute -bottom-[20px] w-6 h-0.5 bg-blue-500 rounded-full"></span>
+          </div>
 
-        {/* USERS */}
-        <Users className="w-5 h-5 text-gray-500" />
+          {/* USERS */}
+          <Users className="w-5 h-5 text-gray-500" />
 
-        {/* NOTIFICATION */}
-        <div className="relative">
-          <Bell className="w-5 h-5 text-gray-500" />
-          <span className="absolute -top-2 -right-2 bg-blue-500 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">
-            6
-          </span>
-        </div>
+          {/* NOTIFICATION */}
+          <div className="relative">
+            <Bell className="w-5 h-5 text-gray-500" />
+            <span className="absolute -top-2 -right-2 bg-blue-500 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">
+              6
+            </span>
+          </div>
 
-        {/* MESSAGE */}
-        <div className="relative">
-          <MessageCircle className="w-5 h-5 text-gray-500" />
-          <span className="absolute -top-2 -right-2 bg-blue-500 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">
-            2
-          </span>
-        </div>
+          {/* MESSAGE */}
+          <div className="relative">
+            <MessageCircle className="w-5 h-5 text-gray-500" />
+            <span className="absolute -top-2 -right-2 bg-blue-500 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">
+              2
+            </span>
+          </div>
 
-        {/* PROFILE */}
-        <div className="flex items-center gap-2 cursor-pointer">
-          <img
-            src={avatar}
-            alt="user"
-            className="w-8 h-8 rounded-full object-cover"
-          />
-          <span className="text-sm font-medium text-gray-700">
-            Dylan Field
-          </span>
-          <ChevronDown className="w-4 h-4 text-gray-500" />
+          {/* PROFILE */}
+          <div className="flex items-center gap-2 cursor-pointer">
+            <img
+              src={avatar}
+              alt="user"
+              className="w-8 h-8 rounded-full object-cover"
+            />
+            <span className="text-sm font-medium text-gray-700">
+              Dylan Field
+            </span>
+            <ChevronDown className="w-4 h-4 text-gray-500" />
+          </div>
         </div>
-      </div>
       </div>
     </div>
   );
