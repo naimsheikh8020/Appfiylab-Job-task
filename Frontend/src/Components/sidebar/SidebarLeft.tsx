@@ -1,5 +1,6 @@
 import { Compass, Users, Bookmark, Settings, ChartColumnIncreasing, UsersRound, Gamepad, Save } from "lucide-react";
 import SuggestedPeople from "./SuggestedPeople";
+import EventPage from "./EventPage";
 // import stevejobs from "../../assets/people1.png"
 
 
@@ -39,6 +40,8 @@ const SidebarLeft = () => {
       </div>
 
       <SuggestedPeople />
+
+      <EventPage/>
 
     </div>
   );
