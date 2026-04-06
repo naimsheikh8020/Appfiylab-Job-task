@@ -9,3 +9,13 @@ export const createPostApi = async (formData: FormData) => {
 
   return res.data;
 };
+
+export const getPostsApi = async () => {
+  const res = await api.get("/posts");
+  return res.data;
+};
+
+export const toggleLikeApi = async (postId: string) => {
+  const res = await api.post(`/posts/${postId}/like`);
+  return res.data;
+};
