@@ -3,14 +3,35 @@ import Stories from "../Components/feed/Stories";
 import CreatePost from "../Components/feed/CreatePost";
 import PostCard from "../Components/feed/PostCard";
 
+const postData = {
+  id: 1,
+  author: "Karim Saif",
+  time: "5 minute ago · Public",
+  content: "-Healthy Tracking App",
+  image: "",
+  likes: 9,
+  comments: [
+    {
+      id: 1,
+      name: "Radovan",
+      text: "Nice UI bro",
+      likes: 198,
+      replies: [
+        { id: 2, name: "Karim", text: "Thanks 🔥" },
+      ],
+    },
+  ],
+};
+
+
 const Feed = () => {
   return (
     <MainLayout>
       <div className="space-y-6">
         <Stories />
         <CreatePost />
-        <PostCard />
-        <PostCard />
+        <PostCard post={postData} />;
+
       </div>
     </MainLayout>
   );
