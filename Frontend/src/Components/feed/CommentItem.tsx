@@ -1,20 +1,32 @@
+import { useState } from "react";
 import commentImg from "../../assets/comment_img.png";
 import { ThumbsUp } from "lucide-react";
+import CommentInput from "./CommentInput";
 
 type Reply = {
-  id: number;
+  id: string;
   name: string;
   text: string;
 };
+
 type Comment = {
-  id: number;
+  id: string;
   name: string;
   text: string;
   likes: number;
   replies?: Reply[];
+  authorId?: string;
 };
 
-const CommentItem = ({ comment }: { comment: Comment }) => {
+const CommentItem = ({
+  comment,
+  postId,
+}: {
+  comment: Comment;
+  postId: string;
+}) => {
+  const [showReply, setShowReply] = useState(false);
+
   return (
     <div className="flex gap-3">
       <img src={commentImg} className="w-8 h-8 rounded-full" />
@@ -28,12 +40,32 @@ const CommentItem = ({ comment }: { comment: Comment }) => {
         {/* ACTIONS */}
         <div className="flex gap-4 text-xs text-gray-500 mt-1 ml-2">
           <span>Like</span>
-          <span>Reply</span>
+
+          {/* 🔥 REPLY BUTTON */}
+          <span
+            className="cursor-pointer"
+            onClick={() => setShowReply((prev) => !prev)}
+          >
+            Reply
+          </span>
+
           <span>21m</span>
+
           <span className="flex items-center gap-1">
             <ThumbsUp className="w-3 h-3" /> {comment.likes}
           </span>
         </div>
+
+        {/* 🔥 STEP 4 USED HERE */}
+        {showReply && (
+          <div className="mt-2 ml-6">
+            <CommentInput
+              postId={postId}
+              parentId={comment.id}
+              replyTo={comment.authorId}
+            />
+          </div>
+        )}
 
         {/* REPLIES */}
         {comment.replies?.map((reply) => (

@@ -5,6 +5,20 @@ import CommentItem from "./CommentItem";
 import CommentInput from "./CommentInput";
 import { useToggleLike } from "../../hooks/useToggleLike";
 
+type Reply = {
+  id: string;
+  name: string;
+  text: string;
+};
+
+type Comment = {
+  id: string;
+  name: string;
+  text: string;
+  likes: number;
+  replies?: Reply[];
+};
+
 type Post = {
   id: string;
   author: string;
@@ -12,7 +26,7 @@ type Post = {
   content: string;
   image?: string;
   likes: number;
-  comments: any[];
+  comments: any[]; // raw backend comments
   liked: boolean;
 };
 
@@ -27,32 +41,55 @@ const PostCard = ({ post }: { post: Post }) => {
   return (
     <div className="bg-white rounded-xl shadow-sm p-5 space-y-4">
 
+      {/* HEADER */}
       <PostHeader author={post.author} time={post.time} />
 
+      {/* CONTENT */}
       <p className="text-sm">{post.content}</p>
 
+      {/* IMAGE */}
       <img
         src={post.image || timeLineImg}
         className="w-full h-[300px] object-cover rounded-lg"
       />
 
+      {/* ACTIONS */}
       <PostActions
         liked={post.liked}
         likes={post.likes}
         onLike={handleLike}
       />
 
-      <CommentInput />
+      {/* ADD COMMENT */}
+      <CommentInput postId={post.id} />
 
+      {/* VIEW COMMENTS */}
       <p className="text-xs text-gray-500 cursor-pointer">
         View previous comments
       </p>
 
-      {post.comments.map((comment: any) => (
-        <CommentItem key={comment.id} comment={comment} />
+      {/* COMMENTS LIST */}
+      {post.comments?.map((comment: any) => (
+        <CommentItem
+          key={comment._id}
+          postId={post.id} 
+          comment={{
+            id: comment._id,
+            name: `${comment.author.firstName} ${comment.author.lastName}`,
+            text: comment.content,
+            likes: comment.likeCount || 0,
+            authorId: comment.author._id, 
+            replies: comment.replies?.map((reply: any) => ({
+              id: reply._id,
+              name: `${reply.author.firstName} ${reply.author.lastName}`,
+              text: reply.content,
+            })),
+          }}
+        />
       ))}
 
-      <CommentInput />
+      {/* ADD COMMENT AGAIN */}
+      <CommentInput postId={post.id} />
     </div>
   );
 };

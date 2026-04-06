@@ -42,7 +42,7 @@ const Feed = () => {
               content: post.content,
               image: post.image,
               likes: post.likeCount ?? 0,
-              comments: [],
+              comments: post.comments || [],
               liked: post.likedBy?.some(
                 (u: any) => u._id === user?.id
               ),
