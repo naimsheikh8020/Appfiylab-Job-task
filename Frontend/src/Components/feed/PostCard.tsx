@@ -1,46 +1,27 @@
-import { useState } from "react";
 import timeLineImg from "../../assets/timeline_img.png";
-
 import PostHeader from "./PostHeader";
 import PostActions from "./PostActions";
 import CommentItem from "./CommentItem";
 import CommentInput from "./CommentInput";
-
-
-
-export type Reply = {
-  id: number;
-  name: string;
-  text: string;
-};
-
-export type Comment = {
-  id: number;
-  name: string;
-  text: string;
-  likes: number;
-  replies?: Reply[];
-};
+import { useToggleLike } from "../../hooks/useToggleLike";
 
 type Post = {
-  id: number;
+  id: string;
   author: string;
   time: string;
   content: string;
   image?: string;
   likes: number;
-  comments: Comment[];
+  comments: any[];
+  liked: boolean;
 };
 
-
-
 const PostCard = ({ post }: { post: Post }) => {
-  const [liked, setLiked] = useState(false);
-  const [likes, setLikes] = useState(post.likes);
+  const { mutate, isPending } = useToggleLike();
 
   const handleLike = () => {
-    setLiked(!liked);
-    setLikes((prev) => (liked ? prev - 1 : prev + 1));
+    if (isPending) return;
+    mutate(post.id);
   };
 
   return (
@@ -55,7 +36,11 @@ const PostCard = ({ post }: { post: Post }) => {
         className="w-full h-[300px] object-cover rounded-lg"
       />
 
-      <PostActions liked={liked} likes={likes} onLike={handleLike} />
+      <PostActions
+        liked={post.liked}
+        likes={post.likes}
+        onLike={handleLike}
+      />
 
       <CommentInput />
 
@@ -63,7 +48,7 @@ const PostCard = ({ post }: { post: Post }) => {
         View previous comments
       </p>
 
-      {post.comments.map((comment) => (
+      {post.comments.map((comment: any) => (
         <CommentItem key={comment.id} comment={comment} />
       ))}
 

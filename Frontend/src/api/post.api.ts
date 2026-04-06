@@ -16,6 +16,6 @@ export const getPostsApi = async () => {
 };
 
 export const toggleLikeApi = async (postId: string) => {
-  const res = await api.post(`/posts/${postId}/like`);
+  const res = await api.put(`/posts/${postId}/like`);
   return res.data;
 };
