@@ -72,13 +72,17 @@ const PostCard = ({ post }: { post: Post }) => {
       {post.comments?.map((comment: any) => (
         <CommentItem
           key={comment._id}
-          postId={post.id} 
+          postId={post.id}
           comment={{
             id: comment._id,
             name: `${comment.author.firstName} ${comment.author.lastName}`,
             text: comment.content,
-            likes: comment.likeCount || 0,
-            authorId: comment.author._id, 
+
+            // 🔥 IMPORTANT FIX (ARRAY, not number)
+            likes: comment.likes || [],
+
+            authorId: comment.author._id,
+
             replies: comment.replies?.map((reply: any) => ({
               id: reply._id,
               name: `${reply.author.firstName} ${reply.author.lastName}`,

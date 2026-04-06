@@ -19,3 +19,8 @@ export const createCommentApi = async ({
 
   return res.data;
 };
+
+export const toggleCommentLikeApi = async (commentId: string) => {
+  const res = await api.put(`/comments/${commentId}/like`);
+  return res.data;
+};

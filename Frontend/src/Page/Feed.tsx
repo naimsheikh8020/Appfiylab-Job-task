@@ -18,7 +18,7 @@ const Feed = () => {
       <div className="space-y-6">
 
         {/* 🔥 HEADER */}
-        <div className="flex justify-between items-center">
+        {/* <div className="flex justify-between items-center">
           <h2 className="text-lg font-semibold">Feed</h2>
 
           <button
@@ -27,7 +27,7 @@ const Feed = () => {
           >
             Logout
           </button>
-        </div>
+        </div> */}
 
         <Stories />
         <CreatePost />
