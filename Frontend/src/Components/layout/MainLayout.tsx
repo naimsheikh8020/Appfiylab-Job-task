@@ -6,26 +6,23 @@ import Navbar from "./Navbar";
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="bg-gray-100 min-h-screen ">
+    <div className="bg-gray-100 min-h-screen">
 
       {/* NAVBAR */}
       <Navbar />
 
-      {/* CONTENT */}
-      <div className="max-w-[1320px] mx-auto px-4 mt-6 grid grid-cols-12 gap-6">
-
-        {/* LEFT */}
-        <div className="hidden lg:block col-span-3">
+      <div className="max-w-[1320px] mx-auto px-4 mt-6 grid grid-cols-12 gap-6 h-[calc(100vh-88px)]">
+        <div className="hidden lg:block col-span-3 overflow-y-auto hide-scrollbar">
           <SidebarLeft />
         </div>
 
-        {/* CENTER */}
-        <div className="col-span-12 lg:col-span-6">
+       
+        <div className="col-span-12 lg:col-span-6 overflow-y-auto hide-scrollbar">
           {children}
         </div>
 
-        {/* RIGHT */}
-        <div className="hidden lg:block col-span-3">
+        {/* RIGHT - Independent Scroll */}
+        <div className="hidden lg:block col-span-3 overflow-y-auto hide-scrollbar">
           <SidebarRight />
         </div>
 
