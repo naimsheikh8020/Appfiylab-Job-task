@@ -4,8 +4,29 @@ import logo from "../assets/logo.svg";
 import topLeftShape from "../assets/shape1.svg";
 import topRightShape from "../assets/shape2.svg";
 import bottomRightShape from "../assets/shape3.svg";
+import { useState } from "react";
+import { useRegister } from "../hooks/useRegister";
+
 
 const SignUp = () => {
+  const { mutate, isPending } = useRegister();
+
+  const [form, setForm] = useState({
+    email: "",
+    firstName: "",
+    lastName: "",
+    password: "",
+  });
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!form.email || !form.firstName || !form.lastName || !form.password) {
+      alert("All fields are required");
+      return;
+    }
+
+    mutate(form);
+  };
   return (
     <div className="relative min-h-screen bg-gray-100 overflow-hidden flex flex-col lg:flex-row">
 
@@ -66,12 +87,15 @@ const SignUp = () => {
           </div>
 
           {/* FORM */}
-          <form className="space-y-5">
+          <form className="space-y-5" onSubmit={handleSubmit}>
             <div>
               <label className="text-sm sm:text-base text-gray-600">Email</label>
               <input
                 type="email"
                 className="w-full border border-gray-200 rounded-lg px-4 py-2.5 mt-1 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                onChange={(e) =>
+                  setForm({ ...form, email: e.target.value })
+                }
               />
             </div>
 
@@ -80,6 +104,9 @@ const SignUp = () => {
               <input
                 type="text"
                 className="w-full border border-gray-200 rounded-lg px-4 py-2.5 mt-1 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                onChange={(e) =>
+                  setForm({ ...form, firstName: e.target.value })
+                }
               />
             </div>
             <div>
@@ -87,6 +114,9 @@ const SignUp = () => {
               <input
                 type="text"
                 className="w-full border border-gray-200 rounded-lg px-4 py-2.5 mt-1 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                onChange={(e) =>
+                  setForm({ ...form, lastName: e.target.value })
+                }
               />
             </div>
 
@@ -95,17 +125,18 @@ const SignUp = () => {
               <input
                 type="password"
                 className="w-full border border-gray-200 rounded-lg px-4 py-2.5 mt-1 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                onChange={(e) =>
+                  setForm({ ...form, password: e.target.value })
+                }
               />
             </div>
-
-            
 
             {/* TERMS */}
             <div className="flex items-center gap-2 text-sm">
               <input type="checkbox" className="accent-blue-600" />
               <span>
                 I agree to the Terms & Conditions
-               
+
               </span>
             </div>
 
