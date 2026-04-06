@@ -12,25 +12,26 @@ import avatar from "../../assets/Avatar.png";
 
 const Navbar = () => {
   return (
-    <div className="w-full bg-white border-b border-gray-100 px-10 h-16 flex items-center justify-around  py-10 shadow sticky top-0 z-50">
+    <div className="w-full bg-white border-b border-gray-100 shadow sticky top-0 z-50">
+      <div className="max-w-[1320px] mx-auto px-4 h-16 flex items-center justify-between">
 
-      {/* LEFT */}
-      <div className="flex items-center gap-2">
-        <img src={logo} alt="logo" className="h-7" />
-      </div>
+        {/* LEFT */}
+        <div className="flex items-center gap-2">
+          <img src={logo} alt="logo" className="h-7" />
+        </div>
 
-      {/* CENTER */}
-      <div className="hidden md:flex items-center bg-gray-100 rounded-full px-5 h-10 w-105">
-        <Search className="w-4 h-4 text-gray-400" />
-        <input
-          type="text"
-          placeholder="input search text"
-          className="bg-transparent outline-none ml-2 w-full text-sm text-gray-600 placeholder-gray-400"
-        />
-      </div>
+        {/* CENTER */}
+        <div className="hidden md:flex items-center bg-gray-100 rounded-full px-5 h-10 w-96">
+          <Search className="w-4 h-4 text-gray-400" />
+          <input
+            type="text"
+            placeholder="input search text"
+            className="bg-transparent outline-none ml-2 w-full text-sm text-gray-600 placeholder-gray-400"
+          />
+        </div>
 
-      {/* RIGHT */}
-      <div className="flex items-center gap-8">
+        {/* RIGHT */}
+        <div className="flex items-center gap-8">
 
         {/* HOME (ACTIVE) */}
         <div className="relative flex flex-col items-center justify-center">
@@ -69,6 +70,7 @@ const Navbar = () => {
           </span>
           <ChevronDown className="w-4 h-4 text-gray-500" />
         </div>
+      </div>
       </div>
     </div>
   );
