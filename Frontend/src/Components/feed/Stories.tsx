@@ -13,7 +13,7 @@ const Stories = () => {
   ];
 
   return (
-    <div className="flex gap-4 overflow-x-auto pb-2">
+    <div className="flex gap-4 overflow-x-auto pb-2 hide-scrollbar">
 
       {/* YOUR STORY */}
       <div className="relative min-w-[140px] h-[190px] rounded-xl overflow-hidden">
