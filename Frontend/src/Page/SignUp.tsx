@@ -9,7 +9,7 @@ import { useRegister } from "../hooks/useRegister";
 
 
 const SignUp = () => {
-  const { mutate, isPending } = useRegister();
+  const { mutate } = useRegister();
 
   const [form, setForm] = useState({
     email: "",

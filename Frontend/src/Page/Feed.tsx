@@ -4,12 +4,12 @@ import CreatePost from "../Components/feed/CreatePost";
 import PostCard from "../Components/feed/PostCard";
 import { usePosts } from "../hooks/usePosts";
 import { useAuthStore } from "../store/auth.store";
-import { useLogout } from "../hooks/useLogout";
+// import { useLogout } from "../hooks/useLogout";
 
 const Feed = () => {
   const { data, isLoading } = usePosts();
   const user = useAuthStore((s) => s.user);
-  const { handleLogout } = useLogout();
+  // const { handleLogout } = useLogout();
 
   if (isLoading) return <div>Loading...</div>;
 

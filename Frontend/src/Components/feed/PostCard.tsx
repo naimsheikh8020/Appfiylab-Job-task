@@ -5,19 +5,19 @@ import CommentItem from "./CommentItem";
 import CommentInput from "./CommentInput";
 import { useToggleLike } from "../../hooks/useToggleLike";
 
-type Reply = {
-  id: string;
-  name: string;
-  text: string;
-};
+// type Reply = {
+//   id: string;
+//   name: string;
+//   text: string;
+// };
 
-type Comment = {
-  id: string;
-  name: string;
-  text: string;
-  likes: number;
-  replies?: Reply[];
-};
+// type Comment = {
+//   id: string;
+//   name: string;
+//   text: string;
+//   likes: number;
+//   replies?: Reply[];
+// };
 
 type Post = {
   id: string;
