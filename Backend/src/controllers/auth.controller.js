@@ -50,8 +50,8 @@ export const loginUser = async (req, res) => {
 
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      secure: true, // ALWAYS true (Render is HTTPS)
+      sameSite: "none", // REQUIRED for cross-origin
     });
 
     res.json({
@@ -63,7 +63,6 @@ export const loginUser = async (req, res) => {
         email: user.email,
       },
     });
-
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -95,7 +94,11 @@ export const logoutUser = async (req, res) => {
 
   await RefreshToken.deleteOne({ token });
 
-  res.clearCookie("refreshToken");
+  res.clearCookie("refreshToken", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+  });
 
   res.json({ message: "Logged out" });
 };

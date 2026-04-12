@@ -6,8 +6,21 @@ import postRoutes from "./routes/post.routes.js";
 import commentRoutes from "./routes/comment.routes.js";
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://appfiylab-job-task-bsb8.vercel.app"
+];
+
 app.use(cors({
-  origin: "https://appfiylab-job-task-bsb8.vercel.app/",
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, origin);
+    } else {
+      return callback(new Error("CORS blocked"));
+    }
+  },
   credentials: true
 }));
 
