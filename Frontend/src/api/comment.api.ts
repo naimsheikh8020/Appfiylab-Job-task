@@ -11,7 +11,7 @@ export const createCommentApi = async ({
   parentId?: string | null;
   replyTo?: string | null;
 }) => {
-  const res = await api.post(`/comments/${postId}`, {
+  const res = await api.post(`/api/comments/${postId}`, {
     content,
     parentId: parentId || null,
     replyTo: replyTo || null,
@@ -21,6 +21,6 @@ export const createCommentApi = async ({
 };
 
 export const toggleCommentLikeApi = async (commentId: string) => {
-  const res = await api.put(`/comments/${commentId}/like`);
+  const res = await api.put(`/api/comments/${commentId}/like`);
   return res.data;
 };
